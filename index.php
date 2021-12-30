@@ -1,52 +1,47 @@
-<?php
-    $username = 'allwold100@gmail.com';
-    $password = 'ozmaodothxkrltxx';
+<!DOCTYPE html>
+<html lang="en">
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    use PHPMailer\PHPMailer\SMTP;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>User Registration with Email Verification in PHP</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-    require 'PHPMailer/Exception.php';
-    require 'PHPMailer/PHPMailer.php';
-    require 'PHPMailer/SMTP.php';
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+</head>
 
+<body>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header text-center">
+        User Registration with Email Verification in PHP
+      </div>
+      <div class="card-body">
+        <form autocomplete=""> <!-- action="processRegister.php" method="post" -->
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" name="name" class="form-control" id="name" required="" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required="" />
+            <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Password</label>
+            <input type="password" name="password" class="form-control" id="password" required="" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Confirm Password</label>
+            <input type="password" name="cpassword" class="form-control" id="cpassword" required="" />
+          </div>
+          <input type="submit" name="btnRegister" class="btn btn-primary" />
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
 
-    //Create an instance; passing `true` enables exceptions
-        $mail = new PHPMailer(true);
-
-        try {
-            //Server settings
-            $mail->SMTPDebug = 0;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = $username;                     //SMTP username
-            $mail->Password   = $password;                               //SMTP password
-            $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-            $mail->CharSet = 'UTF-8';
-
-            //Recipients
-            $mail->setFrom('allwold100@gmail.com', 'Vũ Tiến Đạt');
-            $mail->addAddress('kitudu99@gmail.com', 'Kieu Tuan Dzung');     //Add a recipient
-            // $mail->addAddress('ellen@example.com');               //Name is optional
-            // $mail->addReplyTo('info@example.com', 'Information');
-            // $mail->addCC('cc@example.com');
-            // $mail->addBCC('bcc@example.com');
-
-            //Attachments
-            $mail->addAttachment('document/Demo.xlsx');         //Add attachments
-            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-            //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = '[CSE485] Điểm danh Tuần 20-27';
-            $mail->Body    = 'Chào mừng đến với môn học Công nghệ Web!<a href="http://vietcodedi.com">Click Here</a>';
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-            $mail->send();
-            echo 'Message has been sent';
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
-?>
+</html>
